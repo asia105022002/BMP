@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="pane" prefHeight="400.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.HideController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="檔案">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="隱藏檔案" />
+                        <MenuItem mnemonicParsing="false" onAction="#toReveal" text="取出檔案" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="說明">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="使用說明" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox minWidth="400.0" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" spacing="5.0">
+                    <children>
+                        <Label text="選取圖片:" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="imgInputPath" onAction="#loadImg" text="C:\work\Homework\視窗\input.bmp" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#selectImg" text="Browse..." />
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </HBox>
+                <HBox alignment="CENTER" spacing="5.0">
+                    <children>
+                        <Label text="選取檔案:" textOverrun="CENTER_WORD_ELLIPSIS" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="fileInputPath" onAction="#loadFile" text="C:\work\Homework\視窗\黃圖.jpg" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#selectFile" text="Browse..." />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="5.0">
+                    <children>
+                        <Label text="放大倍率:" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="scale" prefWidth="48.0" text="2" />
+                        <Label text="ceiling:" />
+                        <TextField fx:id="ceiling" prefWidth="24.0" text="7" />
+                        <Label fx:id="capacity" text="可嵌入量:" HBox.hgrow="ALWAYS" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#getCapacity" text="計算嵌入量" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </VBox.margin>
+                </TextArea>
+                <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                    <children>
+                        <Label fx:id="size" text="檔案大小:" HBox.hgrow="ALWAYS" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#extract" text="Button" visible="false" />
+                        <Button mnemonicParsing="false" onAction="#embed" text="嵌入資料" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </BorderPane.margin>
+        </VBox>
+    </center>
+    <right>
+        <ScrollPane fx:id="paneRight">
+            <content>
+                <ImageView fx:id="imageOut" pickOnBounds="true" preserveRatio="true" />
+            </content>
+        </ScrollPane>
+    </right>
+    <left>
+        <ScrollPane fx:id="paneLeft" maxWidth="300.0">
+            <content>
+                <ImageView fx:id="imageIn" pickOnBounds="true" preserveRatio="true" />
+            </content>
+        </ScrollPane>
+    </left>
+</BorderPane>
